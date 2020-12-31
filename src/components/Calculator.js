@@ -4,7 +4,7 @@ import Display from './Display';
 
 export default function Calculator() {
   const [nums, setNums] = useState([]);
-  const [currentNum, setCurrentNum] = useState([]);
+  const [currentNum, setCurrentNum] = useState([0]);
   const [operator, setOperator] = useState('');
 
   const handleNumClick = character => {
@@ -12,19 +12,47 @@ export default function Calculator() {
   }
 
   const handleOperatorClick = character => {
+    let operator = character;
+    let result;
+    if (!nums.length) result = currentNum[0]
+    else {
+      let operatorNums = [nums[nums.length - 1], currentNum[0]];
+      if (operator == '/') result = operatorNums.reduce((a, b) => a / b);
+      else if (operator == 'x') result = operatorNums.reduce((a, b) => a * b);
+      else if (operator == '–') result = operatorNums.reduce((a, b) => a - b);
+      else result = operatorNums.reduce((a, b) => a + b);
+      console.log(result);
+    }
     setNums([...nums, currentNum[0]]);
-    setOperator(character);
     setCurrentNum([]);
+    setOperator(character);
   }
 
-  console.log(nums, currentNum, operator);
+  const handleEqualsClick = () => {
+    setNums([...nums, currentNum[0]]);
+    let operatorNums = [nums[nums.length - 1], currentNum[0]];
+    let result;
+    if (operator == '/') result = operatorNums.reduce((a, b) => a / b);
+    else if (operator == 'x') result = operatorNums.reduce((a, b) => a * b);
+    else if (operator == '–') result = operatorNums.reduce((a, b) => a - b);
+    else result = operatorNums.reduce((a, b) => a + b);
+    setCurrentNum([result]);
+  }
+
+  const handleClearClick = () => {
+    setNums([]);
+    setCurrentNum([0]);
+    setOperator('');
+  }
+
+  console.log(nums, currentNum, operator)
   return (
     <div className="calculator">
       <Display currentNum={currentNum} nums={nums} />
       <Button 
         name="function" 
         character="AC"
-        handleClick={handleOperatorClick}
+        handleClick={handleClearClick}
       />
       <Button 
         name="function" 
@@ -114,7 +142,7 @@ export default function Calculator() {
       <Button 
         name="operator" 
         character="="
-        handleClick={handleOperatorClick}
+        handleClick={handleEqualsClick}
       />
     </div>
   )
