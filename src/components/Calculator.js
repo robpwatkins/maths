@@ -4,109 +4,118 @@ import Display from './Display';
 
 export default function Calculator() {
   const [nums, setNums] = useState([]);
+  const [currentNum, setCurrentNum] = useState([]);
+  const [operator, setOperator] = useState('');
 
   const handleNumClick = character => {
-    setNums([...nums, character]);
+    setCurrentNum([Number(currentNum + character)]);
   }
 
+  const handleOperatorClick = character => {
+    setNums([...nums, currentNum[0]]);
+    setOperator(character);
+    setCurrentNum([]);
+  }
+
+  console.log(nums, currentNum, operator);
   return (
     <div className="calculator">
-      <Display nums={nums} />
+      <Display currentNum={currentNum} nums={nums} />
       <Button 
         name="function" 
         character="AC"
-        handleClick={character => console.log(character)}
-        />
+        handleClick={handleOperatorClick}
+      />
       <Button 
         name="function" 
         character="+/-"
-        handleClick={character => console.log(character)}
-        />
+        handleClick={handleOperatorClick}
+      />
       <Button 
         name="function" 
         character="%"
-        handleClick={character => console.log(character)}
-        />
+        handleClick={handleOperatorClick}
+      />
       <Button 
         name="operator" 
         character="/"
-        handleClick={character => console.log(character)}
-        />
+        handleClick={handleOperatorClick}
+      />
       <Button 
         name="number" 
-        character="7"
+        character={7}
         handleClick={handleNumClick}
-        />
+      />
       <Button 
         name="number" 
-        character="8"
+        character={8}
         handleClick={handleNumClick}
-        />
+      />
       <Button 
         name="number" 
-        character="9"
+        character={9}
         handleClick={handleNumClick}
-        />
+      />
       <Button 
         name="operator" 
         character="x"
-        handleClick={character => console.log(character)}
-        />
+        handleClick={handleOperatorClick}
+      />
       <Button 
         name="number" 
-        character="4"
+        character={4}
         handleClick={handleNumClick}
-        />
+      />
       <Button 
         name="number" 
-        character="5"
+        character={5}
         handleClick={handleNumClick}
-        />
+      />
       <Button 
         name="number" 
-        character="6"
+        character={6}
         handleClick={handleNumClick}
-        />
+      />
       <Button 
         name="operator" 
         character="–"
-        handleClick={character => console.log(character)}
-        />
+        handleClick={handleOperatorClick}
+      />
       <Button 
         name="number" 
-        character="1"
+        character={1}
         handleClick={handleNumClick}
-        />
+      />
       <Button 
         name="number" 
-        character="2"
+        character={2}
         handleClick={handleNumClick}
-        />
+      />
       <Button 
         name="number" 
-        character="3"
+        character={3}
         handleClick={handleNumClick}
-        />
+      />
       <Button 
         name="operator" 
         character="+"
-        handleClick={character => console.log(character)}
-        />
+        handleClick={handleOperatorClick}
+      />
       <Button 
         name="number" 
-        character="0"
+        character={0}
         handleClick={handleNumClick}
-        />
+      />
       <Button 
         name="decimal" 
         character="."
-        handleClick={character => console.log(character)}
-        />
+        handleClick={handleOperatorClick}
+      />
       <Button 
         name="operator" 
         character="="
-        handleClick={character => console.log(character)}
-        />
+        handleClick={handleOperatorClick}
+      />
     </div>
   )
 }

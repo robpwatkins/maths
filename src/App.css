@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: whitesmoke;
 }
 
 .calculator {
@@ -24,7 +24,9 @@
   grid-template-rows: 21% repeat(5, 1fr);
   gap: 1px;
   padding: 1px;
-  background: whitesmoke;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  background: rgb(221, 221, 221);
   border-radius: 7px;
 }
 
@@ -49,7 +51,7 @@
 }
 
 .operator {
-  background: orange;
+  background: rgb(231, 150, 0);
 }
 
 .button:nth-child(18) {
