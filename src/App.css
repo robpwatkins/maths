@@ -1,19 +1,11 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -24,15 +16,47 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.calculator {
+  display: grid;
+  width: 350px;
+  height: 500px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 21% repeat(5, 1fr);
+  gap: 1px;
+  padding: 1px;
+  background: whitesmoke;
+  border-radius: 7px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.display {
+  background: rgb(44, 44, 44);
+  grid-column: 1 / 5;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.button {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: rgb(95, 92, 93);
+}
+
+.function {
+  background: rgb(68, 68, 68);
+}
+
+.operator {
+  background: orange;
+}
+
+.button:nth-child(18) {
+  grid-column: 1 / 3;
+  border-bottom-left-radius: 7px;
+}
+
+.button:nth-last-child(1) {
+  border-bottom-right-radius: 7px;
 }
