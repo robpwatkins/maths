@@ -12,31 +12,27 @@ export default function Calculator() {
   }
 
   const handleOperatorClick = character => {
-    let operator = character;
+    // let operator = character;
     let result;
     if (!nums.length) result = currentNum[0]
     else {
       let operatorNums = [nums[nums.length - 1], currentNum[0]];
-      if (operator == '/') result = operatorNums.reduce((a, b) => a / b);
-      else if (operator == 'x') result = operatorNums.reduce((a, b) => a * b);
-      else if (operator == '–') result = operatorNums.reduce((a, b) => a - b);
-      else result = operatorNums.reduce((a, b) => a + b);
-      console.log(result);
+      operation(operatorNums);
     }
     setNums([...nums, currentNum[0]]);
     setCurrentNum([]);
     setOperator(character);
   }
 
-  const handleEqualsClick = () => {
-    setNums([...nums, currentNum[0]]);
-    let operatorNums = [nums[nums.length - 1], currentNum[0]];
-    let result;
-    if (operator == '/') result = operatorNums.reduce((a, b) => a / b);
-    else if (operator == 'x') result = operatorNums.reduce((a, b) => a * b);
-    else if (operator == '–') result = operatorNums.reduce((a, b) => a - b);
-    else result = operatorNums.reduce((a, b) => a + b);
-    setCurrentNum([result]);
+  const handleEqualsClick = character => {
+    setOperator(character);
+    if (operator === '=') return;
+    else {
+      setNums([...nums, currentNum[0]]);
+      let operatorNums = [nums[nums.length - 1], currentNum[0]];
+      let result = operation(operatorNums);
+      setCurrentNum([result]);
+    }
   }
 
   const handleClearClick = () => {
@@ -45,7 +41,15 @@ export default function Calculator() {
     setOperator('');
   }
 
-  console.log(nums, currentNum, operator)
+  const operation = operatorNums => {
+    let result;
+    if (operator == '/') return result = operatorNums.reduce((a, b) => a / b);
+    else if (operator == 'x') return result = operatorNums.reduce((a, b) => a * b);
+    else if (operator == '–') return result = operatorNums.reduce((a, b) => a - b);
+    else return result = operatorNums.reduce((a, b) => a + b);
+  }
+
+  // console.log(nums, currentNum, operator)
   return (
     <div className="calculator">
       <Display currentNum={currentNum} nums={nums} />
