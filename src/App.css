@@ -40,6 +40,8 @@
   padding: 0 25px 5px 0;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .button {
@@ -50,6 +52,7 @@
   align-items: center;
   cursor: inherit;
   background: rgb(95, 92, 93);
+  border-radius: 5px;
 }
 
 .button:hover {

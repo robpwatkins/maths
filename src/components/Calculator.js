@@ -26,7 +26,7 @@ export default function Calculator() {
   const handleNumClick = character => {
     if (character === '.') {
       if (currentNum.includes('.')) return;
-      setCurrentNum((currentNum + character))
+      else setCurrentNum((currentNum + character));
     } else setCurrentNum([Number(currentNum + character)]);
   }
 
@@ -54,7 +54,7 @@ export default function Calculator() {
   }
 
   const operation = operatorNums => {
-    if (operator === '/') return operatorNums.reduce((a, b) => a / b);
+    if (operator === '÷') return operatorNums.reduce((a, b) => a / b);
     else if (operator === 'x') return operatorNums.reduce((a, b) => a * b);
     else if (operator === '–') return operatorNums.reduce((a, b) => a - b);
     else return operatorNums.reduce((a, b) => a + b);
