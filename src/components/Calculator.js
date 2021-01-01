@@ -13,8 +13,6 @@ export default function Calculator() {
   }
 
   const handleOperatorClick = character => {
-    // let operator = character;
-    // let result;
     if (operator === '=') return setOperator(character);
     else if (!runningTotal) setRunningTotal(currentNum[0]);
     else {
@@ -40,6 +38,7 @@ export default function Calculator() {
   const handleClearClick = () => {
     setNums([]);
     setCurrentNum([0]);
+    setRunningTotal(0);
     setOperator('');
   }
 
