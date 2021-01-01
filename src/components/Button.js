@@ -1,5 +1,4 @@
 import React from 'react';
-import Display from './Display';
 
 export default function Button({ name, character, handleClick }) {
   return (

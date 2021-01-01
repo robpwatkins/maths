@@ -9,7 +9,8 @@ export default function Calculator() {
   const [operator, setOperator] = useState('');
 
   const handleNumClick = character => {
-    setCurrentNum([Number(currentNum + character)]);
+    if (character === '.') setCurrentNum((currentNum + character));
+    else setCurrentNum([Number(currentNum + character)]);
   }
 
   const handleOperatorClick = character => {
@@ -24,6 +25,10 @@ export default function Calculator() {
     setOperator(character);
   }
 
+  const handleDecimalClick = character => {
+    console.log(currentNum);
+  }
+
   const handleEqualsClick = character => {
     setOperator(character);
     if (operator === '=') return;
@@ -35,6 +40,13 @@ export default function Calculator() {
     setCurrentNum([]);
   }
 
+  const operation = operatorNums => {
+    if (operator === '/') return operatorNums.reduce((a, b) => a / b);
+    else if (operator === 'x') return operatorNums.reduce((a, b) => a * b);
+    else if (operator === '–') return operatorNums.reduce((a, b) => a - b);
+    else return operatorNums.reduce((a, b) => a + b);
+  }
+
   const handleClearClick = () => {
     setNums([]);
     setCurrentNum([0]);
@@ -42,15 +54,7 @@ export default function Calculator() {
     setOperator('');
   }
 
-  const operation = operatorNums => {
-    let result;
-    if (operator == '/') return result = operatorNums.reduce((a, b) => a / b);
-    else if (operator == 'x') return result = operatorNums.reduce((a, b) => a * b);
-    else if (operator == '–') return result = operatorNums.reduce((a, b) => a - b);
-    else return result = operatorNums.reduce((a, b) => a + b);
-  }
-
-  console.log(nums, currentNum, runningTotal);
+  console.log(nums, currentNum, runningTotal, operator);
   return (
     <div className="calculator">
       <Display currentNum={currentNum} nums={nums} runningTotal={runningTotal} />
@@ -142,7 +146,7 @@ export default function Calculator() {
       <Button 
         name="decimal" 
         character="."
-        handleClick={handleOperatorClick}
+        handleClick={handleNumClick}
       />
       <Button 
         name="operator" 
