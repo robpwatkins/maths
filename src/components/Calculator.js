@@ -5,6 +5,7 @@ import Display from './Display';
 export default function Calculator() {
   const [nums, setNums] = useState([]);
   const [currentNum, setCurrentNum] = useState([0]);
+  const [runningTotal, setRunningTotal] = useState(0);
   const [operator, setOperator] = useState('');
 
   const handleNumClick = character => {
@@ -13,11 +14,12 @@ export default function Calculator() {
 
   const handleOperatorClick = character => {
     // let operator = character;
-    let result;
-    if (!nums.length) result = currentNum[0]
+    // let result;
+    if (operator === '=') return setOperator(character);
+    else if (!runningTotal) setRunningTotal(currentNum[0]);
     else {
-      let operatorNums = [nums[nums.length - 1], currentNum[0]];
-      operation(operatorNums);
+      let operatorNums = [runningTotal, currentNum[0]];
+      setRunningTotal(operation(operatorNums));
     }
     setNums([...nums, currentNum[0]]);
     setCurrentNum([]);
@@ -29,10 +31,10 @@ export default function Calculator() {
     if (operator === '=') return;
     else {
       setNums([...nums, currentNum[0]]);
-      let operatorNums = [nums[nums.length - 1], currentNum[0]];
-      let result = operation(operatorNums);
-      setCurrentNum([result]);
+      let operatorNums = [runningTotal, currentNum[0]];
+      setRunningTotal(operation(operatorNums));
     }
+    setCurrentNum([]);
   }
 
   const handleClearClick = () => {
@@ -49,10 +51,10 @@ export default function Calculator() {
     else return result = operatorNums.reduce((a, b) => a + b);
   }
 
-  // console.log(nums, currentNum, operator)
+  console.log(nums, currentNum, runningTotal);
   return (
     <div className="calculator">
-      <Display currentNum={currentNum} nums={nums} />
+      <Display currentNum={currentNum} nums={nums} runningTotal={runningTotal} />
       <Button 
         name="function" 
         character="AC"
