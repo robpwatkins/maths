@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import Display from './Display';
 
@@ -7,21 +7,24 @@ export default function Calculator() {
   const [currentNum, setCurrentNum] = useState([0]);
   const [runningTotal, setRunningTotal] = useState(0);
   const [operator, setOperator] = useState('');
+  const [fontSize, setFontSize] = useState(null);
   
   const handleClearClick = () => {
     setNums([]);
     setCurrentNum([0]);
     setRunningTotal(0);
     setOperator('');
+    setFontSize(null);
   }
 
   const handlePlusMinisClick = () => {
     if (currentNum.length) setCurrentNum([currentNum[0] * -1]);
     else setRunningTotal(runningTotal * -1);
   }
-
+  
   const handleModuloClick = () => {
-    setCurrentNum([currentNum[0] * .01]);
+    if (currentNum.length) setCurrentNum([currentNum[0] * .01]);
+    else setRunningTotal(runningTotal * .01);
   }
 
   const handleNumClick = character => {
@@ -61,11 +64,25 @@ export default function Calculator() {
     else return operatorNums.reduce((a, b) => a + b);
   }
 
+  useEffect(() => {
+    const container = document.querySelectorAll(".display");
+    const childContainer = document.querySelectorAll("p");
+    if (container[0].scrollWidth < childContainer[0].scrollWidth + 50) {
+      let elementCount = childContainer[0].innerHTML.length;
+      let fontSize = 525 / elementCount;
+      setFontSize(size => size = fontSize);
+    }
+  }, [currentNum, runningTotal]);
 
   console.log(nums, currentNum, runningTotal, operator);
   return (
     <div className="calculator">
-      <Display currentNum={currentNum} nums={nums} runningTotal={runningTotal} />
+      <Display 
+        currentNum={currentNum}
+        nums={nums}
+        runningTotal={runningTotal} 
+        fontSize={fontSize}
+      />
       <Button 
         name="function" 
         character="AC"

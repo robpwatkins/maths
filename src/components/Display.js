@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function Display({ currentNum, runningTotal }) {
+export default function Display({ fontSize, currentNum, runningTotal }) {
   return (
     <div className="display">
-      <p>{currentNum.length ? currentNum : runningTotal}</p>
+      <p style={{fontSize: `${fontSize}px`}}>{currentNum.length ? currentNum : runningTotal}</p>
     </div>
   )
 }

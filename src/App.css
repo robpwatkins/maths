@@ -37,11 +37,15 @@
   background: rgb(44, 44, 44);
   grid-column: 1 / 5;
   font-size: 65px;
-  padding: 0 25px 5px 0;
+  padding: 0 25px 5px 25px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.wider p {
+  /* font-size: 80%; */
 }
 
 .button {
