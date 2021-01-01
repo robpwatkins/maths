@@ -9,8 +9,10 @@ export default function Calculator() {
   const [operator, setOperator] = useState('');
 
   const handleNumClick = character => {
-    if (character === '.') setCurrentNum((currentNum + character));
-    else setCurrentNum([Number(currentNum + character)]);
+    if (character === '.') {
+      if (currentNum.includes('.')) return;
+      setCurrentNum((currentNum + character))
+    } else setCurrentNum([Number(currentNum + character)]);
   }
 
   const handleOperatorClick = character => {

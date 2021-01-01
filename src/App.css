@@ -48,7 +48,13 @@
   height: 100%;
   justify-content: center;
   align-items: center;
+  cursor: inherit;
   background: rgb(95, 92, 93);
+}
+
+.button:hover {
+  color:rgb(68, 68, 68);
+  background:rgb(221, 221, 221);
 }
 
 .function {
@@ -66,4 +72,14 @@
 
 .button:nth-last-child(1) {
   border-bottom-right-radius: 12px;
+}
+
+p {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: none;
 }
