@@ -31,7 +31,7 @@ export default function Calculator() {
   }
 
   const handleOperatorClick = character => {
-    if (operator === '=') return setOperator(character);
+    if (!currentNum.length) return setOperator(character);
     else if (!runningTotal) setRunningTotal(currentNum[0]);
     else {
       let operatorNums = [runningTotal, currentNum[0]];
@@ -72,7 +72,7 @@ export default function Calculator() {
       />
       <Button 
         name="function" 
-        character="+/-"
+        character="±"
         handleClick={handlePlusMinisClick}
       />
       <Button 
@@ -82,7 +82,7 @@ export default function Calculator() {
       />
       <Button 
         name="operator" 
-        character="/"
+        character="÷"
         handleClick={handleOperatorClick}
       />
       <Button 
