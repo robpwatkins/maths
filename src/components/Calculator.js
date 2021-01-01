@@ -7,6 +7,21 @@ export default function Calculator() {
   const [currentNum, setCurrentNum] = useState([0]);
   const [runningTotal, setRunningTotal] = useState(0);
   const [operator, setOperator] = useState('');
+  
+  const handleClearClick = () => {
+    setNums([]);
+    setCurrentNum([0]);
+    setRunningTotal(0);
+    setOperator('');
+  }
+
+  const handlePlusMinisClick = () => {
+    setCurrentNum([currentNum[0] * -1]);
+  }
+
+  const handleModuloClick = () => {
+    setCurrentNum([currentNum[0] * .01]);
+  }
 
   const handleNumClick = character => {
     if (character === '.') {
@@ -27,10 +42,6 @@ export default function Calculator() {
     setOperator(character);
   }
 
-  const handleDecimalClick = character => {
-    console.log(currentNum);
-  }
-
   const handleEqualsClick = character => {
     setOperator(character);
     if (operator === '=') return;
@@ -49,12 +60,6 @@ export default function Calculator() {
     else return operatorNums.reduce((a, b) => a + b);
   }
 
-  const handleClearClick = () => {
-    setNums([]);
-    setCurrentNum([0]);
-    setRunningTotal(0);
-    setOperator('');
-  }
 
   console.log(nums, currentNum, runningTotal, operator);
   return (
@@ -68,12 +73,12 @@ export default function Calculator() {
       <Button 
         name="function" 
         character="+/-"
-        handleClick={handleOperatorClick}
+        handleClick={handlePlusMinisClick}
       />
       <Button 
         name="function" 
         character="%"
-        handleClick={handleOperatorClick}
+        handleClick={handleModuloClick}
       />
       <Button 
         name="operator" 

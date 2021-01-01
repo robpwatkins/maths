@@ -22,8 +22,8 @@
   height: 500px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 21% repeat(5, 1fr);
-  gap: 1px;
-  padding: 1px;
+  gap: 2px;
+  padding: 2px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 30px;
   background: rgb(221, 221, 221);
@@ -63,6 +63,11 @@
 
 .operator {
   background: rgb(231, 150, 0);
+}
+
+.operator:hover {
+  color:rgb(231, 150, 0);
+  background: rgb(221, 221, 221);
 }
 
 .button:nth-child(18) {
