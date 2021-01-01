@@ -16,7 +16,8 @@ export default function Calculator() {
   }
 
   const handlePlusMinisClick = () => {
-    setCurrentNum([currentNum[0] * -1]);
+    if (currentNum.length) setCurrentNum([currentNum[0] * -1]);
+    else setRunningTotal(runningTotal * -1);
   }
 
   const handleModuloClick = () => {
