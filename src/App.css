@@ -62,10 +62,15 @@
 .button:hover {
   color:rgb(68, 68, 68);
   background:rgb(221, 221, 221);
+  border: 2px solid rgb(95, 92, 93);
 }
 
 .function {
   background: rgb(68, 68, 68);
+}
+
+.function:hover {
+  border: 2px solid rgb(68, 68, 68);
 }
 
 .operator {
@@ -75,6 +80,7 @@
 .operator:hover {
   color:rgb(231, 150, 0);
   background: rgb(221, 221, 221);
+  border: 2px solid rgb(231, 150, 0);
 }
 
 .button:nth-child(18) {
